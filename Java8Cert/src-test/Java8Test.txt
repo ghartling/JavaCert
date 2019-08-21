@@ -1,0 +1,43 @@
+package com.hartling.test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class Java8Test {
+
+	@Before
+	public final void setupBeforeMethod() {
+
+	}
+
+	@After
+	public final void tearDownAfterMethod() {
+
+	}
+
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testLambda() throws Exception {
+		List<Integer> myList = new ArrayList<Integer>();
+		for (int i = 0; i < 100; i++)
+			myList.add(i);
+		Stream<Integer> sequentialStream = myList.stream();
+
+		Stream<Integer> highNums = sequentialStream.filter(p -> p > 90); // filter
+																			// numbers
+																			// greater
+																			// than
+																			// 90
+		System.out.print("High Nums greater than 90=");
+		highNums.forEach(p -> System.out.print(p + " "));
+		// prints "High Nums greater than 90=91 92 93 94 95 96 97 98 99 "
+	}
+}
